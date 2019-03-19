@@ -8,15 +8,22 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/stylesheets/screen.css">
 
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
     <title>Clock</title>
   </head>
   <body>
     <div class="card text-center">
     	<div class="card-body">
 
-    		<h6 class="time-greet"></h6>
-
     		<div class="clock-display">
+          <h6 class="time-greet"></h6>
     			<h1 class="display-1 clock-main"></h1><!-- Hours/Minutes -->
     			<h2 class="time-sec"><span></span></h2><!-- Seconds -->
     			<h5 class="time-ampm"></h5><!-- AM/PM -->
@@ -39,9 +46,10 @@
     </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- JavaScript -->
     <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/weather.js"></script>
     <script src="js/scripts.js"></script>
   </body>
 </html>
