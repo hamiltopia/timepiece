@@ -5,9 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/stylesheets/screen.css">
-
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -16,40 +13,162 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
+    <style media="screen">
+        body {
+        background-color:#220A37;
+        color:#f2f1ef;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-size:100%;
+        margin:0;
+        padding:0;
+      }
+
+      .clock-display {
+        margin:0 auto;
+        padding:2rem 0;
+        width:500px;
+      }
+
+      .time-table {
+        width:100%;
+      }
+
+			#greeting {
+/*         font-size:1.4rem; */
+        font-weight:500;
+        margin:0;
+        padding:0;
+      }
+
+
+      .clock-main {
+        font-size:8.5rem;
+        font-weight:900;
+        margin:0;
+        padding:0;
+        text-align:right;
+      }
+
+
+      #sec {
+        border-bottom:1px solid #f2f1ef;
+        font-size:3rem;
+        margin:0;
+        padding:0;
+        position:relative;
+        text-align:left;
+      }
+
+      #amp {
+        font-size:1.2rem;
+        font-weight:500;
+        margin:0;
+        padding:0;
+        text-align:left;
+      }
+
+      .date {
+				font-size:1.8rem;
+				font-weight:500;
+				letter-spacing:.05rem;
+        margin:0;
+        padding:0;
+        text-align:center;
+      }
+
+
+    </style>
+
+
+
     <title>Clock</title>
   </head>
   <body>
-    <div class="card text-center">
-    	<div class="card-body">
 
-    		<div class="clock-display">
-          <h6 class="time-greet"></h6>
-    			<h1 class="display-1 clock-main"></h1><!-- Hours/Minutes -->
-    			<h2 class="time-sec"><span></span></h2><!-- Seconds -->
-    			<h5 class="time-ampm"></h5><!-- AM/PM -->
-    		</div><!-- Clock Container Display -->
+    <div class="clock-display">
+      <table title="Table!" class="time-table">
+      	<thead>
+      		<tr>
+      			<th colspan="3"><h3 id="greeting"></h3></th>
+      		</tr>
+      	</thead>
+      	<tfoot>
+      		<tr>
+      			<td colspan="3">
+              <h2 class="date"><span id="day"></span>, <span id="month"></span> <span id="date"></span>, <span id="year"></span></h2>
+            </td>
+      		</tr>
+      	</tfoot>
+      	<tbody>
+      		<tr>
+            <td colspan="2">
+              <h1 class="clock-main"><span id="hour"></span>:<span id="min"></span></h1><!-- Hours/Minutes -->
+            </td>
+      			<td width="25%">
+              <h2 id="sec"></h2><!-- Seconds -->
+              <h3 id="amp"></h3><!-- AM/PM -->
+            </td>
+      		</tr>
+      	</tbody>
+      </table>
 
-    		<h5 class="card-title"><span class="date-day-name"></span>, <span class="date-day-month"></span>, <span class="date-year"></span></h5>
+    </div><!-- Clock Container Display -->
 
-    		<p class="card-text">
-    			<strong>
-    				<div class="weather-icon"></div><!-- Weather Icon -->
-    				<span class="weather-temperature"></span> & <span class="weather-description"></span>
-    			</strong>
-    			<br>
-    			<small>
-    				Hi <span class="weather-min-temperature"></span> &bull;	 Low <span class="weather-max-temperature"></span><br>
-    				Sunrise <span class="weather-sunrise"></span> &bull;	Sunset <span class="weather-sunset"></span>
-    			</small>
-    		</p>
 
-    </div>
-    </div>
+
+<div class="spinner">
+	<div class="spinner-mechanism"></div>
+</div>
+
+
+
+    <script type="text/javascript">
+
+    // Display Time
+    function time() {
+      var d = new Date();
+      var s = d.getSeconds();
+      var m = d.getMinutes();
+      var h = d.getHours();
+      var ap = h >= 12 ? 'PM' : 'AM';
+      h = h % 12;
+      h = h ? h : 12; // the hour '0' should be '12'
+      m = ('0'+m).slice(-2);// add '0' for minutes under 10
+
+      s = s < 10 ? '0'+s : s;// add '0' for seconds under 10
+
+      hour.textContent = h;
+      min.textContent = m;
+      sec.textContent = s;
+      amp.textContent = ap;
+    }
+
+    setInterval(time, 1000);
+
+
+      // Display Date
+      var d=new Date()
+      var weekday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday",
+                          "Friday","Saturday")
+      var monthname=new Array("January","February","March","April","May","June","July","August",
+                            "September","October","November","December")
+
+      document.getElementById("day").innerHTML = weekday[d.getDay()];
+      document.getElementById("date").innerHTML = d.getDate();
+      document.getElementById("month").innerHTML = monthname[d.getMonth()];
+      document.getElementById("year").innerHTML = d.getFullYear();
+
+
+    </script>
+
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="css/stylesheets/screen.css"> -->
 
     <!-- JavaScript -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/weather.js"></script>
-    <script src="js/scripts.js"></script>
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <!-- <script src="js/openweather.js"></script> -->
+    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+
   </body>
 </html>
